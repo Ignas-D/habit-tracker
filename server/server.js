@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const habitRoutes = require("./routes/habits");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 const PORT = process.env.PORT || 5173;
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/habits", habitRoutes);
+app.use("/api/auth", authRoutes);
 
 // MongoDB connection and server start
 const startServer = async () => {
@@ -28,13 +30,13 @@ const startServer = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("✅ Connected to MongoDB");
+    console.log("Connected to MongoDB");
 
     app.listen(PORT, () => {
-      console.log(`✅ Server running on http://localhost:${PORT}`);
+      console.log(`Server running on http://localhost:${PORT}`);
     });
   } catch (err) {
-    console.error("❌ MongoDB connection failed:", err.message);
+    console.error("MongoDB connection failed:", err.message);
     process.exit(1);
   }
 };

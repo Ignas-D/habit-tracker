@@ -27,7 +27,7 @@ function App() {
             }
           />
           <Route path="/add" element={<AddHabit />} />
-          <Route path="/login" element={<h1>here is the login page</h1>} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
